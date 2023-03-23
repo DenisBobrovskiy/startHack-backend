@@ -10,8 +10,8 @@ CREATE TABLE user (
 CREATE TABLE wallet (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   author_id INTEGER NOT NULL,
-  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  title TEXT NOT NULL,
-  body TEXT NOT NULL,
+  ticker_symbol TEXT NOT NULL,
+  value_bought INTEGER NOT NULL,
+  volume_bought FLOAT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user (id)
 );

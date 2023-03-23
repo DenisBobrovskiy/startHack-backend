@@ -48,5 +48,9 @@ def create_app(test_config=None):
     from . import marketRoutes
     app.register_blueprint(marketRoutes.bp)
 
+    #BLUEPRINT (PLAYGROUND)
+    from . import playground
+    app.register_blueprint(playground.bp)
+
 
     return app

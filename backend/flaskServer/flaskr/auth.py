@@ -30,6 +30,7 @@ def register():
                     (username, generate_password_hash(password)),
                 )
                 db.commit()
+                return json.dumps({"registerStatus":"success"})
             except db.IntegrityError:
                 error = f"User {username} is already registered."
             else:
@@ -58,7 +59,7 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user['id']
-            return redirect(url_for('index'))
+            # return redirect(url_for('index'))
 
         flash(error)
 

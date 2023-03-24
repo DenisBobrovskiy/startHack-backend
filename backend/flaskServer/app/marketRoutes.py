@@ -10,7 +10,7 @@ from flask import (
 )
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from flaskr.db import get_db
+from app.db import get_db
 
 from .six_api import FinancialDataAPI
 
@@ -59,7 +59,8 @@ def get_stock_price():
     click.echo(type(start_date))
     data = findata.listing_EoDTimeseries("TICKER_BC",symbol_list,str(start_date)) #"TICKER_BC", ["AAPL_67"], "2023-02-17", "2023-02-20"
     ts_df = pd.json_normalize(data['data']['listings'][0]['marketData']['eodTimeseries'])
-    high_std = ts_df[['opening']] 
+    # high_std = ts_df[['opening']] 
+    high_std = ts_df[['high']].std()
     # r = requests.get(six_url)
     # data = r.json()
     click.echo(high_std)
